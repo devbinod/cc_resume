@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import ReactGA from "react-ga";
 import $ from "jquery";
 import "./App.css";
@@ -8,50 +8,35 @@ import About from "./Components/About";
 import Resume from "./Components/Resume";
 import Contact from "./Components/Contact";
 import Portfolio from "./Components/Portfolio";
+import axios from "axios";
+function App() {
+  const [main, setMain] = useState();
+  const [resume, setResume] = useState();
+  const [portfolio, setPortfolio] = useState();
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      foo: "bar",
-      resumeData: {}
-    };
+  useEffect(() => {
+    axios
+      .get(
+        "https://2ddkl2jhmmqgovpopb7g32cbrm0jaysi.lambda-url.us-east-1.on.aws"
+      )
+      .then(({ data }) => {
+        setMain(data?.main);
+        setPortfolio(data?.portfolio);
+        setResume(data?.resume);
+      });
+  }, []);
 
-    ReactGA.initialize("UA-110570651-1");
-    ReactGA.pageview(window.location.pathname);
-  }
-
-  getResumeData() {
-    $.ajax({
-      url: "./resumeData.json",
-      dataType: "json",
-      cache: false,
-      success: function(data) {
-        this.setState({ resumeData: data });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-        alert(err);
-      }
-    });
-  }
-
-  componentDidMount() {
-    this.getResumeData();
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Header data={this.state.resumeData.main} />
-        <About data={this.state.resumeData.main} />
-        <Resume data={this.state.resumeData.resume} />
-        <Portfolio data={this.state.resumeData.portfolio} />
-        <Contact data={this.state.resumeData.main} />
-        <Footer data={this.state.resumeData.main} />
-      </div>
-    );
-  }
+  console.log("====resume", resume);
+  return (
+    <div className="App">
+      <Header data={main} />
+      <About data={main} />
+      <Resume data={resume} />
+      <Portfolio data={portfolio} />
+      <Contact data={main} />
+      <Footer data={main} />
+    </div>
+  );
 }
 
 export default App;
