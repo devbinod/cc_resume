@@ -14,19 +14,18 @@ function App() {
   const [resume, setResume] = useState();
   const [portfolio, setPortfolio] = useState();
 
-  useEffect(() => {
-    axios
-      .get(
-        "https://2ddkl2jhmmqgovpopb7g32cbrm0jaysi.lambda-url.us-east-1.on.aws"
-      )
-      .then(({ data }) => {
-        setMain(data?.main);
-        setPortfolio(data?.portfolio);
-        setResume(data?.resume);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://2ddkl2jhmmqgovpopb7g32cbrm0jaysi.lambda-url.us-east-1.on.aws"
+  //     )
+  //     .then(({ data }) => {
+  //       setMain(data?.main);
+  //       setPortfolio(data?.portfolio);
+  //       setResume(data?.resume);
+  //     });
+  // }, []);
 
-  console.log("====resume", resume);
   return (
     <div className="App">
       <Header data={main} />
