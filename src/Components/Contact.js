@@ -1,16 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Fade, Slide } from "react-reveal";
 
 function Contact(props) {
-  if (!props.data) return null;
+  const address = {
+    street: "(Your Street)",
+    city: "(Your City)",
+    state: "(Your State)",
+    zip: "(Your Zip/Postal Code)",
+  };
+  const { street, city, state, zip } = address;
+  // const name = props.data.name;
+  // const street = props.data.address.street;
+  // const city = props.data.address.city;
+  // const state = props.data.address.state;
+  // const zip = props.data.address.zip;
+  // const phone = props.data.phone;
+  // const message = props.data.contactmessage;
 
-  const name = props.data.name;
-  const street = props.data.address.street;
-  const city = props.data.address.city;
-  const state = props.data.address.state;
-  const zip = props.data.address.zip;
-  const phone = props.data.phone;
-  const message = props.data.contactmessage;
+  const phone = "phone";
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [Subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
   return (
     <section id="contact">
@@ -31,7 +43,7 @@ function Contact(props) {
       <div className="row">
         <Slide left duration={1000}>
           <div className="eight columns">
-            <form action="" method="post" id="contactForm" name="contactForm">
+            <form>
               <fieldset>
                 <div>
                   <label htmlFor="contactName">
@@ -43,7 +55,6 @@ function Contact(props) {
                     size="35"
                     id="contactName"
                     name="contactName"
-                    onChange={this.handleChange}
                   />
                 </div>
 
@@ -57,7 +68,6 @@ function Contact(props) {
                     size="35"
                     id="contactEmail"
                     name="contactEmail"
-                    onChange={this.handleChange}
                   />
                 </div>
 
@@ -69,7 +79,6 @@ function Contact(props) {
                     size="35"
                     id="contactSubject"
                     name="contactSubject"
-                    onChange={this.handleChange}
                   />
                 </div>
 

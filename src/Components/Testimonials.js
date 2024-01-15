@@ -1,38 +1,38 @@
 import React, { Component } from "react";
 
-class Testimonials extends Component {
-  render() {
-    if (!this.props.data) return null;
+function Testimonials(props) {
+  if (!props.data) return null;
 
-    const testimonials = this.props.data.testimonials.map(function(testimonials) {
-      return (
-        <li key={testimonials.user}>
-          <blockquote>
-            <p>{testimonials.text}</p>
-            <cite>{testimonials.user}</cite>
-          </blockquote>
-        </li>
-      );
-    });
-
+  const testimonials = this.props.data.testimonials.map(function (
+    testimonials
+  ) {
     return (
-      <section id="testimonials">
-        <div className="text-container">
-          <div className="row">
-            <div className="two columns header-col">
-              <h1>
-                <span>Client Testimonials</span>
-              </h1>
-            </div>
+      <li key={testimonials.user}>
+        <blockquote>
+          <p>{testimonials.text}</p>
+          <cite>{testimonials.user}</cite>
+        </blockquote>
+      </li>
+    );
+  });
 
-            <div className="ten columns flex-container">
-              <ul className="slides">{testimonials}</ul>
-            </div>
+  return (
+    <section id="testimonials">
+      <div className="text-container">
+        <div className="row">
+          <div className="two columns header-col">
+            <h1>
+              <span>Client Testimonials</span>
+            </h1>
+          </div>
+
+          <div className="ten columns flex-container">
+            <ul className="slides">{testimonials}</ul>
           </div>
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
 }
 
 export default Testimonials;
