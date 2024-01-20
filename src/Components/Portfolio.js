@@ -23,7 +23,7 @@ function Portfolio(props) {
       <Fade left duration={1000} distance="40px">
         <div className="row">
           <div className="twelve columns collapsed">
-            <h1>Check Out Some of My Works.</h1>
+            <h1>Check Out Some of My Cert.</h1>
 
             <div
               id="portfolio-wrapper"

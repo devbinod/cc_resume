@@ -30,7 +30,6 @@ function App() {
       <Header data={main} />
       <About data={main} />
       <Resume data={resume} />
-      <Portfolio data={portfolio} />
       <Contact data={main} />
       <Footer data={main} />
     </div>
