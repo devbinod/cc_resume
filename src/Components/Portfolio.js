@@ -4,7 +4,8 @@ import Fade from "react-reveal";
 
 let id = 0;
 function Portfolio(props) {
-  const projects = props?.data?.map(function (projects) {
+  console.log("===dd", props);
+  const projects = props?.data?.projects?.map(function (projects) {
     let projectImage = "images/portfolio/" + projects.image;
 
     return (

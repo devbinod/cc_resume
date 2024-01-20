@@ -13,8 +13,8 @@ function Resume(props) {
 
   if (!props.data) return null;
 
-  const skillmessage = this.props.data.skillmessage;
-  const education = this.props.data.education.map(function (education) {
+  const skillmessage = props.data.skillmessage;
+  const education = props.data.education.map(function (education) {
     return (
       <div key={education.school}>
         <h3>{education.school}</h3>
@@ -27,7 +27,7 @@ function Resume(props) {
     );
   });
 
-  const work = this.props.data.work.map(function (work) {
+  const work = props.data.work.map(function (work) {
     return (
       <div key={work.company}>
         <h3>{work.company}</h3>
@@ -40,8 +40,8 @@ function Resume(props) {
     );
   });
 
-  const skills = this.props.data.skills.map((skills) => {
-    const backgroundColor = this.getRandomColor();
+  const skills = props.data.skills.map((skills) => {
+    const backgroundColor = getRandomColor();
     const className = "bar-expand " + skills.name.toLowerCase();
     const width = skills.level;
 

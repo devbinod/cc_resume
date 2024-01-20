@@ -12,8 +12,8 @@ import axios from "axios";
 import mydata from "./resumeData.json";
 function App() {
   const [main, setMain] = useState(mydata?.main);
-  const [resume, setResume] = useState();
-  const [portfolio, setPortfolio] = useState();
+  const [resume, setResume] = useState(mydata?.resume);
+  const [portfolio, setPortfolio] = useState(mydata?.portfolio);
 
   console.log("mydata");
 
