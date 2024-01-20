@@ -4,12 +4,11 @@ import Fade from "react-reveal";
 
 function Header(props) {
   if (!props.data) return null;
-  console.log("--------", this.props);
 
-  const project = props.data.project;
-  const github = props.data.github;
-  const name = props.data.name;
-  const description = props.data.description;
+  const project = props.data?.project;
+  const github = props.data?.github;
+  const name = props.data?.name;
+  const description = props?.data?.description;
 
   return (
     <header id="home">

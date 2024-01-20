@@ -4,7 +4,7 @@ import Fade from "react-reveal";
 function Footer(props) {
   if (!props.data) return null;
 
-  const networks = this.props.data.social.map(function (network) {
+  const networks = props.data?.social?.map(function (network) {
     return (
       <li key={network.name}>
         <a href={network.url}>

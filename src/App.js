@@ -9,21 +9,20 @@ import Resume from "./Components/Resume";
 import Contact from "./Components/Contact";
 import Portfolio from "./Components/Portfolio";
 import axios from "axios";
+import mydata from "./resumeData.json";
 function App() {
-  const [main, setMain] = useState();
+  const [main, setMain] = useState(mydata?.main);
   const [resume, setResume] = useState();
   const [portfolio, setPortfolio] = useState();
 
+  console.log("mydata");
+
   // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://2ddkl2jhmmqgovpopb7g32cbrm0jaysi.lambda-url.us-east-1.on.aws"
-  //     )
-  //     .then(({ data }) => {
-  //       setMain(data?.main);
-  //       setPortfolio(data?.portfolio);
-  //       setResume(data?.resume);
-  //     });
+  //   axios.get(".").then(({ data }) => {
+  //     setMain(data?.main);
+  //     setPortfolio(data?.portfolio);
+  //     setResume(data?.resume);
+  //   });
   // }, []);
 
   return (

@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { Fade, Slide } from "react-reveal";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 function Contact(props) {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   const address = {
     street: "(Your Street)",
     city: "(Your City)",
@@ -23,6 +32,17 @@ function Contact(props) {
   const [email, setEmail] = useState("");
   const [Subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const onSubmit = (data) => {
+    axios
+      .post(
+        "https://uddjfsq3wapv54mq32zyp4xawe0xrkmx.lambda-url.us-east-2.on.aws/",
+        data
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <section id="contact">
@@ -43,7 +63,7 @@ function Contact(props) {
       <div className="row">
         <Slide left duration={1000}>
           <div className="eight columns">
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <fieldset>
                 <div>
                   <label htmlFor="contactName">
@@ -53,9 +73,12 @@ function Contact(props) {
                     type="text"
                     defaultValue=""
                     size="35"
-                    id="contactName"
-                    name="contactName"
+                    name="name"
+                    {...register("name", { required: true })}
                   />
+                  {errors.name && (
+                    <p style={{ color: "red" }}>This field is required</p>
+                  )}
                 </div>
 
                 <div>
@@ -66,20 +89,27 @@ function Contact(props) {
                     type="text"
                     defaultValue=""
                     size="35"
-                    id="contactEmail"
-                    name="contactEmail"
+                    name="email"
+                    {...register("email", { required: true })}
                   />
+                  {errors.email && (
+                    <p style={{ color: "red" }}>This field is required</p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="contactSubject">Subject</label>
+                  <label htmlFor="contactSubject">Subject *</label>
                   <input
                     type="text"
                     defaultValue=""
                     size="35"
                     id="contactSubject"
-                    name="contactSubject"
+                    name="subject"
+                    {...register("subject", { required: true })}
                   />
+                  {errors.subject && (
+                    <p style={{ color: "red" }}>This field is required</p>
+                  )}
                 </div>
 
                 <div>
@@ -89,13 +119,16 @@ function Contact(props) {
                   <textarea
                     cols="50"
                     rows="15"
-                    id="contactMessage"
-                    name="contactMessage"
+                    name="message"
+                    {...register("message", { required: true })}
                   ></textarea>
+                  {errors.message && (
+                    <p style={{ color: "red" }}>This field is required</p>
+                  )}
                 </div>
 
                 <div>
-                  <button className="submit">Submit</button>
+                  <input className="submit" type="submit" />
                   <span id="image-loader">
                     <img alt="" src="images/loader.gif" />
                   </span>
