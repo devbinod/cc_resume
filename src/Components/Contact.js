@@ -8,6 +8,7 @@ function Contact(props) {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -39,7 +40,8 @@ function Contact(props) {
         data
       )
       .then((res) => {
-        console.log(res);
+        alert("Successfully saved.");
+        reset();
       })
       .catch((err) => console.log(err));
   };
