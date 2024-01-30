@@ -46,12 +46,11 @@ function Header(props) {
               Contact
             </a>
           </li>
-          <li>
-            <a
-              target="_blank"
-              className="smoothscroll"
-              href="https://www.goglides.dev/binod"
-            >
+          <li
+            className="smoothscroll"
+            onClick={() => window.open("https://www.goglides.dev/binod")}
+          >
+            <a className="smoothscroll" href="#test">
               View My Blog
             </a>
           </li>
