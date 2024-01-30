@@ -46,6 +46,15 @@ function Header(props) {
               Contact
             </a>
           </li>
+          <li>
+            <a
+              target="_blank"
+              className="smoothscroll"
+              href="https://www.goglides.dev/binod"
+            >
+              View My Blog
+            </a>
+          </li>
         </ul>
       </nav>
 
